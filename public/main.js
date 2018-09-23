@@ -241,12 +241,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./add-news/add-news.component */ "./src/app/add-news/add-news.component.ts");
 /* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
 /* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
+/* harmony import */ var _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login-modal/login-modal.component */ "./src/app/login-modal/login-modal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -276,7 +278,8 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
-                _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__["AddNewsComponent"]
+                _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__["AddNewsComponent"],
+                _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__["LoginModalComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -364,7 +367,7 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         this.dashboardService.fetchNewsList().subscribe(function (res) {
             if (res['success']) {
-                console.log(res['data']);
+                // console.log(res['data']);
                 _this.newsList = res['data'];
             }
             else {
@@ -449,7 +452,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n    <!-- Links -->\r\n    <ul class=\"nav nav-pills\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" >Link 1</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#exampleModal\" >Add News</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\r\n      </li>\r\n    </ul>\r\n  \r\n    <ul class=\"nav nav-pills ml-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" >{{userId}}</a>\r\n      </li>\r\n  \r\n      <li class=\"nav-item\">\r\n        <a class=\"navbar-brand\" >\r\n          <i class=\"far fa-user\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  \r\n  </nav>\r\n\r\n  <add-news></add-news>"
+module.exports = "<!-- FOR DASHBOARD PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\" >\r\n\r\n  <!-- Links -->\r\n  <ul class=\"nav nav-pills\">\r\n    <!-- <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\" (click)=\"func()\">Link 1</a>\r\n      </li> -->\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" href=\"#\" (click)=\"func()\" data-toggle=\"modal\" data-target=\"#exampleModal\">Add News</a>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" href=\"#\" (click)=\"logout()\">Logout</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <ul class=\"nav nav-pills ml-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\">{{userId}}</a>\r\n    </li>\r\n\r\n    <li class=\"nav-item\">\r\n      <a class=\"navbar-brand\">\r\n        <i class=\"far fa-user\"></i>\r\n      </a>\r\n    </li>\r\n  </ul>\r\n\r\n</nav>\r\n\r\n<add-news></add-news>"
 
 /***/ }),
 
@@ -465,6 +468,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../login/login.service */ "./src/app/login/login.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -476,16 +480,30 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent(loginService) {
+    function HeaderComponent(loginService, router) {
         this.loginService = loginService;
+        this.router = router;
         this.userId = 'User Name';
+        this.isLoginPage = false;
     }
     HeaderComponent.prototype.ngOnInit = function () {
         this.userId = this.loginService.userId;
+        this.isLoginPage = this.loginService.isLoginPage;
     };
     HeaderComponent.prototype.logout = function () {
-        this.loginService.logout();
+        var _this = this;
+        this.loginService.logout().subscribe(function (res) {
+            console.log(res);
+            _this.router.navigate(['login']);
+        }, function (err) {
+            console.log(err);
+        });
+        return false;
+    };
+    HeaderComponent.prototype.func = function () {
+        return false;
     };
     HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -493,7 +511,7 @@ var HeaderComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./header.component.html */ "./src/app/header/header.component.html"),
             styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")]
         }),
-        __metadata("design:paramtypes", [_login_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"]])
+        __metadata("design:paramtypes", [_login_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], HeaderComponent);
     return HeaderComponent;
 }());
@@ -553,6 +571,103 @@ var HttpService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/login-modal/login-modal.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/login-modal/login-modal.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/login-modal/login-modal.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/login-modal/login-modal.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal fade\" id=\"login-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"loginModalLabel\" aria-hidden=\"false\" *ngIf = \"showModalWindow\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"loginModalLabel\">Login</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <form #f=\"ngForm\">\n          <div class=\"form-group row\">\n            <div class=\"col-sm-3\" style=\"text-align: center\">\n              <label for=\"title\" class=\"col-form-label\">UserId</label>\n            </div>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" [(ngModel)]=\"loginId\" name=\"title\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <div class=\"col-sm-3\" style=\"text-align: center\">\n              <label for=\"title\" class=\"col-form-label\">Password</label>\n            </div>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"password\" [(ngModel)]=\"password\" name=\"title\" required>\n            </div>\n          </div>\n\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit(f)\">Login</button>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/login-modal/login-modal.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/login-modal/login-modal.component.ts ***!
+  \******************************************************/
+/*! exports provided: LoginModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginModalComponent", function() { return LoginModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../login/login.service */ "./src/app/login/login.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoginModalComponent = /** @class */ (function () {
+    function LoginModalComponent(loginService, router) {
+        this.loginService = loginService;
+        this.router = router;
+        this.showModalWindow = false;
+    }
+    LoginModalComponent.prototype.ngOnInit = function () {
+    };
+    LoginModalComponent.prototype.closeModal = function () {
+    };
+    LoginModalComponent.prototype.showModal = function () {
+        this.showModalWindow = true;
+    };
+    LoginModalComponent.prototype.submit = function (f) {
+        var _this = this;
+        if (f.valid) {
+            var loginInfo = {
+                userId: this.loginId,
+                password: this.password
+            };
+            this.loginService.login(loginInfo).subscribe(function (res) {
+                if (res['success']) {
+                    // console.log(res['data']);
+                    _this.loginService.userId = res['data']['userId'];
+                    _this.router.navigate(['dashboard']);
+                }
+                else {
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        }
+        else {
+        }
+    };
+    LoginModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'login-modal',
+            template: __webpack_require__(/*! ./login-modal.component.html */ "./src/app/login-modal/login-modal.component.html"),
+            styles: [__webpack_require__(/*! ./login-modal.component.css */ "./src/app/login-modal/login-modal.component.css")]
+        }),
+        __metadata("design:paramtypes", [_login_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], LoginModalComponent);
+    return LoginModalComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/login/login.component.css":
 /*!*******************************************!*\
   !*** ./src/app/login/login.component.css ***!
@@ -571,7 +686,7 @@ module.exports = ".form-signin{\r\n    width: 100%;\r\n    max-width: 330px;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" style=\"margin-top: 10%\">\r\n  <div class=\"col-sm-12\" style=\"text-align: center\">\r\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n      <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\r\n      <label for=\"loginid\" class=\"sr-only\">Login Id</label>\r\n      <input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"form-control\" placeholder=\"Login Id\" required=\"\" autofocus=\"\" [(ngModel)]=\"loginId\">\r\n\r\n      <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n      <input type=\"password\" id=\"inputPassword\" name=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"\" [(ngModel)]=\"password\">\r\n      <div class=\"checkbox mb-3\">\r\n        <label>\r\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\r\n        </label>\r\n      </div>\r\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" >Sign in</button>\r\n      <p class=\"mt-5 mb-3 text-muted\">© 2017-2018</p>\r\n    </form>\r\n  </div>\r\n</div>"
+module.exports = "<!-- <div class=\"row\" style=\"margin-top: 10%\">\r\n  <div class=\"col-sm-12\" style=\"text-align: center\">\r\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n      <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\r\n      <label for=\"loginid\" class=\"sr-only\">Login Id</label>\r\n      <input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"form-control\" placeholder=\"Login Id\" required=\"\" autofocus=\"\" [(ngModel)]=\"loginId\">\r\n\r\n      <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n      <input type=\"password\" id=\"inputPassword\" name=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"\" [(ngModel)]=\"password\">\r\n      <div class=\"checkbox mb-3\">\r\n        <label>\r\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\r\n        </label>\r\n      </div>\r\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" >Sign in</button>\r\n      <p class=\"mt-5 mb-3 text-muted\">© 2017-2018</p>\r\n    </form>\r\n  </div>\r\n</div> -->\r\n\r\n<!-- FOR LOGIN PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n  <ul class=\"nav nav-pills mr-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" href=\"#\" (click)=\"func()\">Register</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\r\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\r\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\r\n  </form>\r\n\r\n</nav>\r\n\r\n<div class=\"container-fluid\" style=\"height: 100%;\">\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\" *ngFor=\"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -588,6 +703,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _login_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.service */ "./src/app/login/login.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -600,17 +716,35 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(loginService, router) {
+    function LoginComponent(loginService, router, dashboardService) {
         this.loginService = loginService;
         this.router = router;
+        this.dashboardService = dashboardService;
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.fetchNewsList();
+    };
+    LoginComponent.prototype.func = function () {
+        return false;
+    };
+    LoginComponent.prototype.fetchNewsList = function () {
+        var _this = this;
+        this.dashboardService.fetchNewsList().subscribe(function (res) {
+            if (res['success']) {
+                // console.log(res['data']);
+                _this.newsList = res['data'];
+            }
+            else {
+            }
+        }, function (err) {
+            console.log(err);
+        });
     };
     LoginComponent.prototype.submit = function (f) {
         var _this = this;
         if (f.valid) {
-            // console.log(this.loginId + "   " + this.password);
             var loginInfo = {
                 userId: this.loginId,
                 password: this.password
@@ -634,7 +768,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_login_service__WEBPACK_IMPORTED_MODULE_1__["LoginService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_3__["DashboardService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -670,12 +804,13 @@ var LoginService = /** @class */ (function () {
     function LoginService(httpService) {
         this.httpService = httpService;
         this.userId = '';
+        this.isLoginPage = false;
     }
     LoginService.prototype.login = function (loginInfo) {
         return this.httpService.httpPost('/login', loginInfo);
     };
     LoginService.prototype.logout = function () {
-        this.httpService.httpGet('/logout');
+        return this.httpService.httpGet('/logout');
     };
     LoginService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

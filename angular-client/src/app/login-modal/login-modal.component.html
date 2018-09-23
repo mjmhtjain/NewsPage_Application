@@ -1,0 +1,37 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="false" *ngIf = "showModalWindow">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm">
+          <div class="form-group row">
+            <div class="col-sm-3" style="text-align: center">
+              <label for="title" class="col-form-label">UserId</label>
+            </div>
+            <div class="col-sm-9">
+              <input class="form-control" type="text" [(ngModel)]="loginId" name="title" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-3" style="text-align: center">
+              <label for="title" class="col-form-label">Password</label>
+            </div>
+            <div class="col-sm-9">
+              <input class="form-control" type="password" [(ngModel)]="password" name="title" required>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="submit(f)">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

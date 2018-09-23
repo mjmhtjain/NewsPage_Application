@@ -6,6 +6,7 @@ import {HttpService} from '../http/http.service';
 })
 export class LoginService {
   public userId = '';
+  public isLoginPage = false;
 
   constructor(private httpService : HttpService) { }
 
@@ -14,6 +15,6 @@ export class LoginService {
   }
 
   logout(){
-    this.httpService.httpGet('/logout');
+    return this.httpService.httpGet('/logout');
   }
 }

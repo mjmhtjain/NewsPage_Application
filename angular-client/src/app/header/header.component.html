@@ -1,30 +1,31 @@
-<nav class="navbar navbar-expand-sm bg-light">
+<!-- FOR DASHBOARD PAGE -->
+<nav class="navbar navbar-expand-sm bg-light" >
 
-    <!-- Links -->
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" >Link 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" >Add News</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
-      </li>
-    </ul>
-  
-    <ul class="nav nav-pills ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" >{{userId}}</a>
-      </li>
-  
-      <li class="nav-item">
-        <a class="navbar-brand" >
-          <i class="far fa-user"></i>
-        </a>
-      </li>
-    </ul>
-  
-  </nav>
+  <!-- Links -->
+  <ul class="nav nav-pills">
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="#" (click)="func()">Link 1</a>
+      </li> -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="func()" data-toggle="modal" data-target="#exampleModal">Add News</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="logout()">Logout</a>
+    </li>
+  </ul>
 
-  <add-news></add-news>
+  <ul class="nav nav-pills ml-auto">
+    <li class="nav-item">
+      <a class="nav-link">{{userId}}</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="navbar-brand">
+        <i class="far fa-user"></i>
+      </a>
+    </li>
+  </ul>
+
+</nav>
+
+<add-news></add-news>

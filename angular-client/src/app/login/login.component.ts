@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'login',
@@ -12,15 +13,33 @@ export class LoginComponent implements OnInit {
 
   public loginId;
   public password;
+  public newsList: any;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.fetchNewsList(); 
+  }
+
+  func(){
+    return false;
+  }
+
+  fetchNewsList() {
+    this.dashboardService.fetchNewsList().subscribe(res => {
+      if (res['success']) {
+        // console.log(res['data']);
+        this.newsList = res['data'];
+      } else {
+
+      }
+    }, err => {
+      console.log(err);
+    })
   }
 
   submit(f: NgForm) {
     if (f.valid) {
-      // console.log(this.loginId + "   " + this.password);
       let loginInfo = {
         userId: this.loginId,
         password: this.password

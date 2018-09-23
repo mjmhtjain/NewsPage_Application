@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService, private newsService: AddNewsService) { }
 
   ngOnInit() {
-    this.fetchNewsList();
+    this.fetchNewsList(); 
 
     this.newsService.newsObservable.subscribe(res => {
       // console.log("News Received : "+ res);
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   fetchNewsList() {
     this.dashboardService.fetchNewsList().subscribe(res => {
       if (res['success']) {
-        console.log(res['data']);
+        // console.log(res['data']);
         this.newsList = res['data'];
       } else {
 

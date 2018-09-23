@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { AddNewsComponent } from './add-news/add-news.component';
 import { AddNewsService } from './add-news/add-news.service';
 import { DashboardService } from './dashboard/dashboard.service';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 const router: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const router: Routes = [
         LoginComponent,
         DashboardComponent,
         HeaderComponent,
-        AddNewsComponent
+        AddNewsComponent,
+        LoginModalComponent
     ],
     imports: [
         BrowserModule,

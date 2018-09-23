@@ -64,7 +64,7 @@ var sessionChecker = function (req, res, next) {
 }
 
 // route for Home-Page
-app.get('/', sessionChecker, (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -74,7 +74,7 @@ app.get('/testing', (req, res) => {
 });
 
 // route for Home-Page
-app.post('/scrape', (req, res) => {
+app.post('/scrape', sessionChecker, (req, res) => {
     if (req.body) {
         let url = req.body.url;
         let title = dataScraper.titleScraper(url, function (err, response, html) {
@@ -114,7 +114,8 @@ app.post('/scrape', (req, res) => {
 
 app.get('/logout', (req, res) => {
     res.clearCookie('user_sid');
-    res.redirect('/');
+    req.session.user = null;
+    res.json({ success: true, message: 'Cookies cleared' });
 });
 
 app.route('/login')
