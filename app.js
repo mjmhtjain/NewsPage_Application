@@ -74,7 +74,11 @@ app.get('/testing', (req, res) => {
 app.post('/scrape', (req, res) => {
     if(req.body){
         let url = req.body.url;
-        dataScraper.titleScraper(url)
+         let title = dataScraper.titleScraper(url);
+
+         //persist into db
+         
+         res.json({ success: true, message: '', data : title });
     }else{
         res.json({ success: false, message: 'Invalid Data received' });
     }
