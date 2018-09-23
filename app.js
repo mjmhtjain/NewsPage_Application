@@ -5,6 +5,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const request = require('request');
+const cheerio = require('cheerio');
 
 //import controllers
 const PasswordHasher = require('./Util/passwordHasher');
@@ -52,48 +54,54 @@ app.use((req, res, next) => {
 
 var sessionChecker = function (req, res, next) {
     if (req.session.user && req.cookies.user_sid) {
-        // res.send('Session Exists !!!');
-        // console.log('Session Exists !!!');
-        res.redirect('/dashboard');
-    } else {
         next();
+    } else {
+        res.clearCookie('user_sid');
+        res.redirect('/');
     }
 }
 
-// app.get('/', sessionChecker, (req, res) => {
-//     req.session.user = true;
-//     res.send('Hello There!! Session has been created');
-// })
+// route for Home-Page
+app.get('*', sessionChecker, (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 // route for Home-Page
-app.get('/', sessionChecker, (req, res) => {
-    res.redirect('/login');
+app.get('/testing', (req, res) => {
+    res.json({ success: true, message: 'Hello There .. ' });
+});
 
-    // var promise = UserDetailModel.queries.fetchAllUserDetails();
-    // promise.then((data)=>{
-    //     data.array.forEach(element => {
-    //         console.log(element);
-    //         res.send(element);
-    //     });
-    // });
+app.get('/logout', (req, res) => {
+    res.clearCookie('user_sid');
+    res.redirect('/');
 });
 
 app.route('/login')
     .post((req, res) => {
-        let user = req.body.username;
+        let user = req.body.userId;
         let pass = req.body.password;
 
         //fetch password from db and then compare with form password
-        UserDetailModel.queries.fetchUserDetailByUserId(user, (err, data)=>{
-            let hashedPass = data[0]._doc.password;
-            PasswordHasher.validatePassword(pass, hashedPass,  (err, result)=> {
-                if(result){
-                    res.send("Correct Password");
-                }else{
-                    res.send("Wrong Password");
+        UserDetailModel.queries.fetchUserDetailByUserId(user, (err, data) => {
+            if (err) {
+                res.json({ success: false, message: err });
+            } else {
+                if (data && data.length > 0) {
+                    let hashedPass = data[0]._doc.password;
+                    PasswordHasher.validatePassword(pass, hashedPass, (err, result) => {
+                        if (result) {
+                            req.session.user = user;
+                            res.json({ success: true, message: "Correct Password", data: { userId: user, password: pass } });
+                        } else {
+                            req.session.user = null;
+                            res.json({ success: false, message: "Wrong Password" });
+                        }
+                    });
+                } else {
+                    req.session.user = null;
+                    res.json({ success: false, message: "Wrong Password" });
                 }
-            });
-           
+            }
         })
     })
 

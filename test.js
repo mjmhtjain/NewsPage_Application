@@ -1,4 +1,7 @@
 const bcrypt = require('bcrypt');
+const request = require('request');
+const cheerio = require('cheerio');
+var http = require("http");
 
 //import models
 const UserDetailModel = require('./Models/userDetailsModel');
@@ -39,5 +42,40 @@ var fetchAllUserDetails = function(){
     })
 }
 
-fetchAllUserDetails();  
-console.log('executed'); 
+const postData = JSON.stringify({
+    'msg': 'Hello World!'
+  });
+
+const options = {
+    hostname: 'www.google.com',
+    port: 80,
+    path: '/upload',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(postData)
+    }
+  };
+
+var scraper = function(){
+
+    // request(url, function(err, response, html){
+    //     if(!err){ 
+    //         let $ = cheerio.load(html);
+    //         $('title').filter(function(){
+    //             let data = $(this);
+    //             console.log(data.text());
+    //         });
+    //     }else{
+    //         console.log(err);
+    //     }
+    // });
+
+    http.get(options, (res)=>{
+        console.log(res);
+    })
+
+}
+
+scraper();
+
