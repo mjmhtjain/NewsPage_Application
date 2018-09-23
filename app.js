@@ -6,12 +6,15 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const dataScraper = require('./Util/dataScrapper');
+const request = require('request');
+const cheerio = require('cheerio');
 
 //import controllers
 const PasswordHasher = require('./Util/passwordHasher');
 
 //import models
 const UserDetailModel = require('./Models/userDetailsModel');
+const NewsArticlesModel = require('./Models/newsArticlesModel');
 
 // Connect mongoose to our database
 const config = require('./database');
@@ -61,7 +64,7 @@ var sessionChecker = function (req, res, next) {
 }
 
 // route for Home-Page
-app.get('*', sessionChecker, (req, res) => {
+app.get('/', sessionChecker, (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -72,14 +75,39 @@ app.get('/testing', (req, res) => {
 
 // route for Home-Page
 app.post('/scrape', (req, res) => {
-    if(req.body){
+    if (req.body) {
         let url = req.body.url;
-         let title = dataScraper.titleScraper(url);
+        let title = dataScraper.titleScraper(url, function (err, response, html) {
+            if (!err) {
+                let $ = cheerio.load(html);
+                $('title').filter(function () {
+                    let data = $(this);
+                    // console.log(data.text());
+                    let pageTitle = data.text();
 
-         //persist into db
-         
-         res.json({ success: true, message: '', data : title });
-    }else{
+                    let newsArticlesModel = NewsArticlesModel.model;
+                    let newObj = new newsArticlesModel({
+                        title : pageTitle,
+                        URL : url,
+                        clicks : 0
+                    });
+                    NewsArticlesModel.queries.persistNewsArticle(newObj, (err, dbData)=>{
+                        if(!err){
+                            res.json({ success: true, message: 'Article Added Successfully', data: dbData });
+                        }else{
+                            res.json({ success: false, message: err, data: null });
+                        }
+                    });
+
+                    // res.json({ success: true, message: '', data: pageTitle });
+                });
+            } else {
+                console.log(err);
+                res.json({ success: false, message: err });
+            }
+        });
+
+    } else {
         res.json({ success: false, message: 'Invalid Data received' });
     }
 });
@@ -116,7 +144,22 @@ app.route('/login')
                 }
             }
         })
+    });
+
+app.get('/fetchAllNewsArticles', (req, res) => {
+    NewsArticlesModel.queries.fetchAllNewsArticles((err, dbData) => {
+        if (!err) {
+            res.json({ success: true, message: 'success', data: dbData });
+        } else {
+            res.json({ success: false, message: err, data: null });
+        }
     })
+});
+
+app.use((req, res, next)=>{
+    res.clearCookie('user_sid');
+    res.redirect('/');
+})
 
 //Declaring Port
 const port = 3000;

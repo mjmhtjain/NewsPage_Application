@@ -1,21 +1,9 @@
 const request = require('request');
 const cheerio = require('cheerio');
 
-var titleScraper = function(url){
+var titleScraper = function(url, callback){
     // let url = 'https://www.amazon.in/';
-    request(url, function(err, response, html){
-        if(!err){ 
-            let $ = cheerio.load(html);
-            $('title').filter(function(){
-                let data = $(this);
-                // console.log(data.text());
-                return data.text();
-            });
-        }else{
-            console.log(err);
-            return '';
-        }
-    });
+    request(url, callback);
 }
 
-module.export = titleScraper;
+module.exports.titleScraper = titleScraper;

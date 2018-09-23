@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Add BucketList</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form>\n            <div class=\"form-group row\">\n              <div class=\"col-sm-3\" style=\"text-align: center\">\n                <label for=\"title\" class=\"col-form-label\">Add Url</label>\n              </div>\n              <div class=\"col-sm-9\">\n                <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newUrl\" name=\"title\" required>\n              </div>\n            </div>\n  \n          </form>\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">Add</button>\n        </div>\n      </div>\n    </div>\n  </div>"
+module.exports = "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Add</h5>\r\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <form>\r\n            <div class=\"form-group row\">\r\n              <div class=\"col-sm-3\" style=\"text-align: center\">\r\n                <label for=\"title\" class=\"col-form-label\">Add Url</label>\r\n              </div>\r\n              <div class=\"col-sm-9\">\r\n                <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newUrl\" name=\"title\" required>\r\n              </div>\r\n            </div>\r\n  \r\n          </form>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n          <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">Add</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -56,6 +56,7 @@ module.exports = "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddNewsComponent", function() { return AddNewsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _add_news_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add-news.service */ "./src/app/add-news/add-news.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,11 +67,32 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AddNewsComponent = /** @class */ (function () {
-    function AddNewsComponent() {
+    function AddNewsComponent(addNewsService) {
+        this.addNewsService = addNewsService;
         this.newUrl = '';
     }
     AddNewsComponent.prototype.ngOnInit = function () {
+    };
+    AddNewsComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.newUrl) {
+            var urlMessage = {
+                url: this.newUrl
+            };
+            this.addNewsService.addNewsUrl(urlMessage).subscribe(function (res) {
+                if (res['success']) {
+                    console.log(res['data']);
+                    _this.addNewsService.notifyNews(res['data']);
+                }
+                else {
+                    console.log(res['message']);
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        }
     };
     AddNewsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -78,9 +100,59 @@ var AddNewsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./add-news.component.html */ "./src/app/add-news/add-news.component.html"),
             styles: [__webpack_require__(/*! ./add-news.component.css */ "./src/app/add-news/add-news.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_add_news_service__WEBPACK_IMPORTED_MODULE_1__["AddNewsService"]])
     ], AddNewsComponent);
     return AddNewsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-news/add-news.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/add-news/add-news.service.ts ***!
+  \**********************************************/
+/*! exports provided: AddNewsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddNewsService", function() { return AddNewsService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http/http.service */ "./src/app/http/http.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AddNewsService = /** @class */ (function () {
+    function AddNewsService(http) {
+        this.http = http;
+        this.news = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.newsObservable = this.news.asObservable();
+    }
+    AddNewsService.prototype.addNewsUrl = function (newsUrl) {
+        return this.http.httpPost('scrape', newsUrl);
+    };
+    AddNewsService.prototype.notifyNews = function (newsObject) {
+        this.news.next(newsObject);
+    };
+    AddNewsService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"]])
+    ], AddNewsService);
+    return AddNewsService;
 }());
 
 
@@ -105,7 +177,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<router-outlet></router-outlet>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<router-outlet></router-outlet>\r\n\r\n"
 
 /***/ }),
 
@@ -167,12 +239,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./add-news/add-news.component */ "./src/app/add-news/add-news.component.ts");
+/* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
+/* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -208,7 +284,8 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"]
             ],
-            providers: [_login_login_service__WEBPACK_IMPORTED_MODULE_6__["LoginService"], _http_http_service__WEBPACK_IMPORTED_MODULE_7__["HttpService"]],
+            providers: [_login_login_service__WEBPACK_IMPORTED_MODULE_6__["LoginService"], _http_http_service__WEBPACK_IMPORTED_MODULE_7__["HttpService"], _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__["AddNewsService"],
+                _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__["DashboardService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -237,7 +314,7 @@ module.exports = ".fill { \r\n    min-height: 100%;\r\n    height: 100%;\r\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\" style=\"height: 100%;\">\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <header></header>\n    </div>\n  </div>\n\n  <div class=\"row\" style=\"margin-top: 20px\">\n    <div class=\"col-sm-12\">\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <ul class=\"list-group w-75\">\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\">\n                Inbox\n                <span class=\"badge badge-primary badge-pill\">12</span>\n              </li>\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\">\n                Ads\n                <span class=\"badge badge-primary badge-pill\">50</span>\n              </li>\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\">\n                Junk\n                <span class=\"badge badge-primary badge-pill\">99</span>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"container-fluid\" style=\"height: 100%;\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <header></header>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\" *ngFor = \"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </li>\r\n              <!-- <li class=\"list-group-item d-flex justify-content-between align-items-center\">\r\n                Ads\r\n                <span class=\"badge badge-primary badge-pill\">50</span>\r\n              </li>\r\n              <li class=\"list-group-item d-flex justify-content-between align-items-center\">\r\n                Junk\r\n                <span class=\"badge badge-primary badge-pill\">99</span>\r\n              </li> -->\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -252,6 +329,8 @@ module.exports = "<div class=\"container-fluid\" style=\"height: 100%;\">\n  <di
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _dashboard_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
+/* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -262,10 +341,37 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(dashboardService, newsService) {
+        this.dashboardService = dashboardService;
+        this.newsService = newsService;
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.fetchNewsList();
+        this.newsService.newsObservable.subscribe(function (res) {
+            // console.log("News Received : "+ res);
+            if (_this.newsList && _this.newsList.length >= 0) {
+                _this.newsList.push(res);
+            }
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    DashboardComponent.prototype.fetchNewsList = function () {
+        var _this = this;
+        this.dashboardService.fetchNewsList().subscribe(function (res) {
+            if (res['success']) {
+                console.log(res['data']);
+                _this.newsList = res['data'];
+            }
+            else {
+            }
+        }, function (err) {
+            console.log(err);
+        });
     };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -273,9 +379,52 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_dashboard_service__WEBPACK_IMPORTED_MODULE_1__["DashboardService"], _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_2__["AddNewsService"]])
     ], DashboardComponent);
     return DashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/dashboard/dashboard.service.ts ***!
+  \************************************************/
+/*! exports provided: DashboardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardService", function() { return DashboardService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http/http.service */ "./src/app/http/http.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DashboardService = /** @class */ (function () {
+    function DashboardService(httpService) {
+        this.httpService = httpService;
+    }
+    DashboardService.prototype.fetchNewsList = function () {
+        return this.httpService.httpGet('/fetchAllNewsArticles');
+    };
+    DashboardService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"]])
+    ], DashboardService);
+    return DashboardService;
 }());
 
 
@@ -300,7 +449,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm bg-light\">\n\n    <!-- Links -->\n    <ul class=\"nav nav-pills\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >Link 1</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#exampleModal\" >Add News</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\n      </li>\n    </ul>\n  \n    <ul class=\"nav nav-pills ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >{{userId}}</a>\n      </li>\n  \n      <li class=\"nav-item\">\n        <a class=\"navbar-brand\" >\n          <i class=\"far fa-user\"></i>\n        </a>\n      </li>\n    </ul>\n  \n  </nav>\n\n  <add-news></add-news>"
+module.exports = "<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n    <!-- Links -->\r\n    <ul class=\"nav nav-pills\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" >Link 1</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#exampleModal\" >Add News</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\r\n      </li>\r\n    </ul>\r\n  \r\n    <ul class=\"nav nav-pills ml-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" >{{userId}}</a>\r\n      </li>\r\n  \r\n      <li class=\"nav-item\">\r\n        <a class=\"navbar-brand\" >\r\n          <i class=\"far fa-user\"></i>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  \r\n  </nav>\r\n\r\n  <add-news></add-news>"
 
 /***/ }),
 
@@ -422,7 +571,7 @@ module.exports = ".form-signin{\r\n    width: 100%;\r\n    max-width: 330px;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" style=\"margin-top: 10%\">\n  <div class=\"col-sm-12\" style=\"text-align: center\">\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\n      <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\n      <label for=\"loginid\" class=\"sr-only\">Login Id</label>\n      <input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"form-control\" placeholder=\"Login Id\" required=\"\" autofocus=\"\" [(ngModel)]=\"loginId\">\n\n      <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"\" [(ngModel)]=\"password\">\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" >Sign in</button>\n      <p class=\"mt-5 mb-3 text-muted\">© 2017-2018</p>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"row\" style=\"margin-top: 10%\">\r\n  <div class=\"col-sm-12\" style=\"text-align: center\">\r\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n      <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\r\n      <label for=\"loginid\" class=\"sr-only\">Login Id</label>\r\n      <input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"form-control\" placeholder=\"Login Id\" required=\"\" autofocus=\"\" [(ngModel)]=\"loginId\">\r\n\r\n      <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n      <input type=\"password\" id=\"inputPassword\" name=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"\" [(ngModel)]=\"password\">\r\n      <div class=\"checkbox mb-3\">\r\n        <label>\r\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\r\n        </label>\r\n      </div>\r\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" >Sign in</button>\r\n      <p class=\"mt-5 mb-3 text-muted\">© 2017-2018</p>\r\n    </form>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -601,7 +750,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\OJN5KOR\Desktop\Gantt-Project\NewsPage_Application\angular-client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Mohit Jain\Desktop\Projects\NewsPage_Application\angular-client\src\main.ts */"./src/main.ts");
 
 
 /***/ })
