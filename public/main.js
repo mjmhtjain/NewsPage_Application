@@ -23,6 +23,70 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/add-news/add-news.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/add-news/add-news.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/add-news/add-news.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/add-news/add-news.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Add BucketList</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form>\n            <div class=\"form-group row\">\n              <div class=\"col-sm-3\" style=\"text-align: center\">\n                <label for=\"title\" class=\"col-form-label\">Add Url</label>\n              </div>\n              <div class=\"col-sm-9\">\n                <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newUrl\" name=\"title\" required>\n              </div>\n            </div>\n  \n          </form>\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n          <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">Add</button>\n        </div>\n      </div>\n    </div>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/add-news/add-news.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/add-news/add-news.component.ts ***!
+  \************************************************/
+/*! exports provided: AddNewsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddNewsComponent", function() { return AddNewsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AddNewsComponent = /** @class */ (function () {
+    function AddNewsComponent() {
+        this.newUrl = '';
+    }
+    AddNewsComponent.prototype.ngOnInit = function () {
+    };
+    AddNewsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'add-news',
+            template: __webpack_require__(/*! ./add-news.component.html */ "./src/app/add-news/add-news.component.html"),
+            styles: [__webpack_require__(/*! ./add-news.component.css */ "./src/app/add-news/add-news.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddNewsComponent);
+    return AddNewsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -102,12 +166,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./add-news/add-news.component */ "./src/app/add-news/add-news.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -133,7 +199,8 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"]
+                _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
+                _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__["AddNewsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -233,7 +300,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm bg-light\">\n\n    <!-- Links -->\n    <ul class=\"nav nav-pills\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link active\" >Link 1</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >Link 2</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\n      </li>\n    </ul>\n  \n    <ul class=\"nav nav-pills ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >{{userId}}</a>\n      </li>\n  \n      <li class=\"nav-item\">\n        <a class=\"navbar-brand\" >\n          <i class=\"far fa-user\"></i>\n        </a>\n      </li>\n    </ul>\n  \n  </nav>"
+module.exports = "<nav class=\"navbar navbar-expand-sm bg-light\">\n\n    <!-- Links -->\n    <ul class=\"nav nav-pills\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >Link 1</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" data-toggle=\"modal\" data-target=\"#exampleModal\" >Add News</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"logout()\">Logout</a>\n      </li>\n    </ul>\n  \n    <ul class=\"nav nav-pills ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" >{{userId}}</a>\n      </li>\n  \n      <li class=\"nav-item\">\n        <a class=\"navbar-brand\" >\n          <i class=\"far fa-user\"></i>\n        </a>\n      </li>\n    </ul>\n  \n  </nav>\n\n  <add-news></add-news>"
 
 /***/ }),
 

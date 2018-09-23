@@ -5,8 +5,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const request = require('request');
-const cheerio = require('cheerio');
 
 //import controllers
 const PasswordHasher = require('./Util/passwordHasher');

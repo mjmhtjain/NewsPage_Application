@@ -10,6 +10,7 @@ import { HttpService } from './http/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { AddNewsComponent } from './add-news/add-news.component';
 
 const router: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const router: Routes = [
         AppComponent,
         LoginComponent,
         DashboardComponent,
-        HeaderComponent
+        HeaderComponent,
+        AddNewsComponent
     ],
     imports: [
         BrowserModule,
