@@ -59,22 +59,17 @@ const options = {
 
 var scraper = function(){
 
-    // request(url, function(err, response, html){
-    //     if(!err){ 
-    //         let $ = cheerio.load(html);
-    //         $('title').filter(function(){
-    //             let data = $(this);
-    //             console.log(data.text());
-    //         });
-    //     }else{
-    //         console.log(err);
-    //     }
-    // });
-
-    http.get(options, (res)=>{
-        console.log(res);
-    })
-
+    request('https://www.amazon.in/', function(err, response, html){
+        if(!err){ 
+            let $ = cheerio.load(html);
+            $('title').filter(function(){
+                let data = $(this);
+                console.log(data.text());
+            });
+        }else{
+            console.log(err);
+        }
+    });
 }
 
 scraper();

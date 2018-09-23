@@ -5,8 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const request = require('request');
-const cheerio = require('cheerio');
+const dataScraper = require('./Util/dataScrapper');
 
 //import controllers
 const PasswordHasher = require('./Util/passwordHasher');
@@ -69,6 +68,16 @@ app.get('*', sessionChecker, (req, res) => {
 // route for Home-Page
 app.get('/testing', (req, res) => {
     res.json({ success: true, message: 'Hello There .. ' });
+});
+
+// route for Home-Page
+app.post('/scrape', (req, res) => {
+    if(req.body){
+        let url = req.body.url;
+        dataScraper.titleScraper(url)
+    }else{
+        res.json({ success: false, message: 'Invalid Data received' });
+    }
 });
 
 app.get('/logout', (req, res) => {
