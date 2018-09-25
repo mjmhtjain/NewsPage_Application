@@ -3,14 +3,15 @@
 
   <ul class="nav nav-pills mr-auto">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/register']" >Register</a>
+      <a class="nav-link" [routerLink]="['/register']">Register</a>
     </li>
   </ul>
 
   <form class="form-inline ml-auto" #f="ngForm" (ngSubmit)="submit(f)">
-    <input class="form-control mr-sm-2" type="text" name="user" [(ngModel)]="loginId" placeholder="UserId">
-    <input class="form-control mr-sm-2" type="password" name="pass" [(ngModel)]="password" placeholder="Password">
-    <button class="btn btn-success" type="submit">Login</button>
+    <input class="form-control mr-sm-2" type="text" name="user" [(ngModel)]="loginId" placeholder="UserId" required>
+    <input class="form-control mr-sm-2" type="password" name="pass" [(ngModel)]="password" placeholder="Password"
+      required>
+    <button class="btn btn-success" type="submit" [disabled]="!f.form.valid">Login</button>
   </form>
 
 </nav>
@@ -19,6 +20,18 @@
 
   <div class="row" style="margin-top: 20px">
     <div class="col-sm-12">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex justify-content-center">
+              <alert [type]="alert.type" class="w-25" style="text-align: center" *ngIf="alertOpen" [dismissOnTimeout]="alert.timeout"
+              (onClosed)="closeAlert()">
+              {{alert.message}}
+            </alert>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-sm-12">
           <div class="d-flex justify-content-center">

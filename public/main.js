@@ -695,7 +695,7 @@ module.exports = ".form-signin{\r\n    width: 100%;\r\n    max-width: 330px;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- FOR LOGIN PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n  <ul class=\"nav nav-pills mr-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" [routerLink]=\"['/register']\" >Register</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\r\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\r\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\r\n  </form>\r\n\r\n</nav>\r\n\r\n<div class=\"container-fluid\" style=\"height: 100%;\">\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <a href=\"{{news.URL}}\" target=\"_blank\" class=\"list-group-item list-group-item-action d-flex justify-content-between align-items-center\"\r\n                *ngFor=\"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </a>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!-- FOR LOGIN PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n  <ul class=\"nav nav-pills mr-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\" required>\r\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\"\r\n      required>\r\n    <button class=\"btn btn-success\" type=\"submit\" [disabled]=\"!f.form.valid\">Login</button>\r\n  </form>\r\n\r\n</nav>\r\n\r\n<div class=\"container-fluid\" style=\"height: 100%;\">\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n              <alert [type]=\"alert.type\" class=\"w-25\" style=\"text-align: center\" *ngIf=\"alertOpen\" [dismissOnTimeout]=\"alert.timeout\"\r\n              (onClosed)=\"closeAlert()\">\r\n              {{alert.message}}\r\n            </alert>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <a href=\"{{news.URL}}\" target=\"_blank\" class=\"list-group-item list-group-item-action d-flex justify-content-between align-items-center\"\r\n                *ngFor=\"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </a>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -731,6 +731,7 @@ var LoginComponent = /** @class */ (function () {
         this.loginService = loginService;
         this.router = router;
         this.dashboardService = dashboardService;
+        this.alertOpen = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.fetchNewsList();
@@ -753,7 +754,7 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.submit = function (f) {
         var _this = this;
-        if (f.valid) {
+        if (f.valid && this.loginId.trim() && this.password.trim()) {
             var loginInfo = {
                 userId: this.loginId,
                 password: this.password
@@ -765,11 +766,28 @@ var LoginComponent = /** @class */ (function () {
                     _this.router.navigate(['dashboard']);
                 }
                 else {
+                    _this.openAlert('Invalid credentials.. Please try again!!', 'danger');
+                    f.reset();
                 }
             }, function (err) {
                 console.log(err);
             });
         }
+        else {
+            this.openAlert('Invalid credentials.. Please try again!!', 'danger');
+            f.reset();
+        }
+    };
+    LoginComponent.prototype.closeAlert = function () {
+        this.alertOpen = false;
+    };
+    LoginComponent.prototype.openAlert = function (message, alertType) {
+        this.alert = {
+            timeout: 3000,
+            message: message,
+            type: alertType
+        };
+        this.alertOpen = true;
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -905,7 +923,7 @@ var RegisterComponent = /** @class */ (function () {
             };
             this.registerService.register(userDetails).subscribe(function (res) {
                 if (res['success']) {
-                    console.log(res['data']);
+                    // console.log(res['data']);
                     _this.openAlert('Done :)', 'success');
                     // form.reset();
                     _this.hideForm = true;

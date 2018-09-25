@@ -14,14 +14,16 @@ export class LoginComponent implements OnInit {
   public loginId;
   public password;
   public newsList: any;
+  public alert: any;
+  public alertOpen = false;
 
   constructor(private loginService: LoginService, private router: Router, private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.fetchNewsList(); 
+    this.fetchNewsList();
   }
 
-  func(){
+  func() {
     return false;
   }
 
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(f: NgForm) {
-    if (f.valid) {
+    if (f.valid && this.loginId.trim() && this.password.trim()) {
       let loginInfo = {
         userId: this.loginId,
         password: this.password
@@ -51,12 +53,30 @@ export class LoginComponent implements OnInit {
           this.loginService.userId = res['data']['userId'];
           this.router.navigate(['dashboard']);
         } else {
-
+          this.openAlert('Invalid credentials.. Please try again!!', 'danger');
+          f.reset();
         }
       }, err => {
         console.log(err);
       })
+    } else {
+      this.openAlert('Invalid credentials.. Please try again!!', 'danger');
+      f.reset();
     }
+  }
+
+  closeAlert() {
+    this.alertOpen = false;
+  }
+
+  openAlert(message, alertType) {
+    this.alert = {
+      timeout: 3000,
+      message: message,
+      type: alertType
+    };
+
+    this.alertOpen = true;
   }
 
 }

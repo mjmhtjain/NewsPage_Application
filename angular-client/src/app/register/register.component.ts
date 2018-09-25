@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
 
       this.registerService.register(userDetails).subscribe(res => {
         if (res['success']) {
-          console.log(res['data']);
+          // console.log(res['data']);
           this.openAlert('Done :)', 'success');
           // form.reset();
           this.hideForm = true;
