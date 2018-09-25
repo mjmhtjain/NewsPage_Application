@@ -34,11 +34,16 @@ var func_fetchAllUserDetails = function(){
     return UserDetailModel.find({}).exec();
 }
 
+var func_registerUser = function(modelObj, callback){
+    modelObj.save(callback);
+}
+
 var DocumentModelTemplate = {
     model: UserDetailModel,
     queries: {
         fetchUserDetailByUserId: func_fetchUserDetailByUserId,
-        fetchAllUserDetails : func_fetchAllUserDetails
+        fetchAllUserDetails : func_fetchAllUserDetails,
+        registerUser : func_registerUser
     }
 }
 

@@ -87,14 +87,14 @@ app.post('/scrape', sessionChecker, (req, res) => {
 
                     let newsArticlesModel = NewsArticlesModel.model;
                     let newObj = new newsArticlesModel({
-                        title : pageTitle,
-                        URL : url,
-                        clicks : 0
+                        title: pageTitle,
+                        URL: url,
+                        clicks: 0
                     });
-                    NewsArticlesModel.queries.persistNewsArticle(newObj, (err, dbData)=>{
-                        if(!err){
+                    NewsArticlesModel.queries.persistNewsArticle(newObj, (err, dbData) => {
+                        if (!err) {
                             res.json({ success: true, message: 'Article Added Successfully', data: dbData });
-                        }else{
+                        } else {
                             res.json({ success: false, message: err, data: null });
                         }
                     });
@@ -117,6 +117,31 @@ app.get('/logout', (req, res) => {
     req.session.user = null;
     res.json({ success: true, message: 'Cookies cleared' });
 });
+
+app.route('/register')
+    .post((req, res) => {
+        let formUserId = req.body.userId;
+        let formPassword = req.body.password;
+        let formName = req.body.name;
+        let formEmail = req.body.email;
+        let hashedPass = PasswordHasher.asynchEncrypt(formPassword);
+
+        let userDetailModel = UserDetailModel.model;
+        let newUserObj = new userDetailModel({
+            userId: formUserId,
+            name: formName,
+            email: formEmail,
+            password: hashedPass 
+        });
+
+        UserDetailModel.queries.registerUser(newUserObj, (err, dbData) => {
+            if (!err) {
+                res.json({ success: true, message: "User Registered", data: dbData });
+            } else {
+                res.json({ success: false, message: err });
+            }
+        });
+    })
 
 app.route('/login')
     .post((req, res) => {
@@ -157,7 +182,7 @@ app.get('/fetchAllNewsArticles', (req, res) => {
     })
 });
 
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     res.clearCookie('user_sid');
     res.redirect('/');
 })
