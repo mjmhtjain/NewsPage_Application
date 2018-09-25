@@ -177,7 +177,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<router-outlet></router-outlet>\r\n\r\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
@@ -242,6 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
 /* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
 /* harmony import */ var _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login-modal/login-modal.component */ "./src/app/login-modal/login-modal.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -263,10 +264,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var router = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
-    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"] }
+    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"] },
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_15__["RegisterComponent"] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -279,7 +282,8 @@ var AppModule = /** @class */ (function () {
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
                 _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__["AddNewsComponent"],
-                _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__["LoginModalComponent"]
+                _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__["LoginModalComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_15__["RegisterComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -589,7 +593,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal fade\" id=\"login-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"loginModalLabel\" aria-hidden=\"false\" *ngIf = \"showModalWindow\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"loginModalLabel\">Login</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <form #f=\"ngForm\">\n          <div class=\"form-group row\">\n            <div class=\"col-sm-3\" style=\"text-align: center\">\n              <label for=\"title\" class=\"col-form-label\">UserId</label>\n            </div>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" [(ngModel)]=\"loginId\" name=\"title\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <div class=\"col-sm-3\" style=\"text-align: center\">\n              <label for=\"title\" class=\"col-form-label\">Password</label>\n            </div>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"password\" [(ngModel)]=\"password\" name=\"title\" required>\n            </div>\n          </div>\n\n        </form>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit(f)\">Login</button>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"modal fade\" id=\"login-modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"loginModalLabel\" aria-hidden=\"false\" *ngIf = \"showModalWindow\">\r\n  <div class=\"modal-dialog\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"loginModalLabel\">Login</h5>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <form #f=\"ngForm\">\r\n          <div class=\"form-group row\">\r\n            <div class=\"col-sm-3\" style=\"text-align: center\">\r\n              <label for=\"title\" class=\"col-form-label\">UserId</label>\r\n            </div>\r\n            <div class=\"col-sm-9\">\r\n              <input class=\"form-control\" type=\"text\" [(ngModel)]=\"loginId\" name=\"title\" required>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"form-group row\">\r\n            <div class=\"col-sm-3\" style=\"text-align: center\">\r\n              <label for=\"title\" class=\"col-form-label\">Password</label>\r\n            </div>\r\n            <div class=\"col-sm-9\">\r\n              <input class=\"form-control\" type=\"password\" [(ngModel)]=\"password\" name=\"title\" required>\r\n            </div>\r\n          </div>\r\n\r\n        </form>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"submit\" class=\"btn btn-primary\" (click)=\"submit(f)\">Login</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -686,7 +690,7 @@ module.exports = ".form-signin{\r\n    width: 100%;\r\n    max-width: 330px;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"row\" style=\"margin-top: 10%\">\r\n  <div class=\"col-sm-12\" style=\"text-align: center\">\r\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n      <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\r\n      <label for=\"loginid\" class=\"sr-only\">Login Id</label>\r\n      <input type=\"text\" id=\"loginid\" name=\"loginid\" class=\"form-control\" placeholder=\"Login Id\" required=\"\" autofocus=\"\" [(ngModel)]=\"loginId\">\r\n\r\n      <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n      <input type=\"password\" id=\"inputPassword\" name=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"\" [(ngModel)]=\"password\">\r\n      <div class=\"checkbox mb-3\">\r\n        <label>\r\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\r\n        </label>\r\n      </div>\r\n      <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" >Sign in</button>\r\n      <p class=\"mt-5 mb-3 text-muted\">© 2017-2018</p>\r\n    </form>\r\n  </div>\r\n</div> -->\r\n\r\n<!-- FOR LOGIN PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n  <ul class=\"nav nav-pills mr-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" href=\"#\" (click)=\"func()\">Register</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\r\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\r\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\r\n  </form>\r\n\r\n</nav>\r\n\r\n<div class=\"container-fluid\" style=\"height: 100%;\">\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <a href=\"{{news.URL}}\" target=\"_blank\" class=\"list-group-item list-group-item-action d-flex justify-content-between align-items-center\"\r\n                *ngFor=\"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </a>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!-- FOR LOGIN PAGE -->\r\n<nav class=\"navbar navbar-expand-sm bg-light\">\r\n\r\n  <ul class=\"nav nav-pills mr-auto\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" [routerLink]=\"['/register']\" >Register</a>\r\n    </li>\r\n  </ul>\r\n\r\n  <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\r\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\r\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\r\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\r\n  </form>\r\n\r\n</nav>\r\n\r\n<div class=\"container-fluid\" style=\"height: 100%;\">\r\n\r\n  <div class=\"row\" style=\"margin-top: 20px\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <h3 class=\"w-75\" style=\"text-align: center\">News Listing</h3>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"d-flex justify-content-center\">\r\n            <ul class=\"list-group w-75\">\r\n              <a href=\"{{news.URL}}\" target=\"_blank\" class=\"list-group-item list-group-item-action d-flex justify-content-between align-items-center\"\r\n                *ngFor=\"let news of newsList\">\r\n                {{news.title}}\r\n                <span class=\"badge badge-primary badge-pill\">{{news.clicks}}</span>\r\n              </a>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -825,6 +829,69 @@ var LoginService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/register/register.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/register/register.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/register/register.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- FOR REGISTER PAGE -->\n<nav class=\"navbar navbar-expand-sm bg-light\">\n\n  <ul class=\"nav nav-pills mr-auto\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [routerLink] = \"['/login']\">Back to Login Page</a>\n    </li>\n  </ul>\n\n  <!-- <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\n  </form> -->\n\n</nav>\n\n<div class=\"container-fluid\" style=\"height: 100%;\">\n\n\n\n  <div class=\"row\" style=\"margin-top: 20px\">\n    <div class=\"col-sm-12\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <h3 class=\"w-75\" style=\"text-align: center\">REGISTER</h3>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"d-flex justify-content-center \" style=\"margin-top: 20px\">\n\n        <form style=\"width: 30%\" #registerForm=\"ngForm\" (submit)=\"registerFormSubmit(registerForm)\">\n          <div class=\"form-group row\">\n            <label for=\"Name\" class=\"col-sm-3 col-form-label\">Name</label>\n            <div class=\"col-sm-9\">\n              <input type=\"text\" class=\"form-control\" id=\"Name\" placeholder=\"Enter your name\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Email\" class=\"col-sm-3 col-form-label\">Email</label>\n            <div class=\"col-sm-9\">\n              <input type=\"email\" class=\"form-control\" id=\"Email\" placeholder=\"Enter your email eg: abcd@qwer.com\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"UserId\" class=\"col-sm-3 col-form-label\">User ID</label>\n            <div class=\"col-sm-9\">\n              <input type=\"text\" class=\"form-control\" id=\"UserId\" placeholder=\"Enter a User ID\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Password\" class=\"col-sm-3 col-form-label\">Password</label>\n            <div class=\"col-sm-9\">\n              <input type=\"password\" class=\"form-control\" id=\"Password\" placeholder=\"Enter a strong password\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <div class=\"col-sm-12\" style=\"text-align: center\">\n              <button type=\"submit\" class=\"btn btn-success form-control\" style=\"width: 33%\" id=\"Submit\">Register</button>\n            </div>\n          </div>\n        </form>\n      </div>\n\n      <!-- <div class=\"d-flex justify-content-center w-75\">\n\n        <form>\n          <div class=\"form-inline\">\n            <label for=\"name\">Name</label>\n            <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Enter your name eg: Paul\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"Email\">Email</label>\n            <input type=\"text\" class=\"form-control\" id=\"Email\" placeholder=\"Enter your email eg: abcd@qwer.com\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"UserId\">User ID</label>\n            <input type=\"text\" class=\"form-control\" id=\"UserId\" placeholder=\"Enter a User ID\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"Password\">Password</label>\n            <input type=\"text\" class=\"form-control\" id=\"Password\" placeholder=\"Enter a strong password\">\n          </div>\n        </form>\n\n      </div> -->\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/register/register.component.ts ***!
+  \************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RegisterComponent = /** @class */ (function () {
+    function RegisterComponent() {
+    }
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'register',
+            template: __webpack_require__(/*! ./register.component.html */ "./src/app/register/register.component.html"),
+            styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RegisterComponent);
+    return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -885,7 +952,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Mohit Jain\Desktop\Projects\NewsPage_Application\angular-client\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\OJN5KOR\Desktop\Gantt-Project\NewsPage_Application\angular-client\src\main.ts */"./src/main.ts");
 
 
 /***/ })

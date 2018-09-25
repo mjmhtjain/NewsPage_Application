@@ -1,0 +1,96 @@
+<!-- FOR REGISTER PAGE -->
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <ul class="nav nav-pills mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink] = "['/login']">Back to Login Page</a>
+    </li>
+  </ul>
+
+  <!-- <form class="form-inline ml-auto" #f="ngForm" (ngSubmit)="submit(f)">
+    <input class="form-control mr-sm-2" type="text" name="user" [(ngModel)]="loginId" placeholder="UserId">
+    <input class="form-control mr-sm-2" type="password" name="pass" [(ngModel)]="password" placeholder="Password">
+    <button class="btn btn-success" type="submit">Login</button>
+  </form> -->
+
+</nav>
+
+<div class="container-fluid" style="height: 100%;">
+
+
+
+  <div class="row" style="margin-top: 20px">
+    <div class="col-sm-12">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex justify-content-center">
+            <h3 class="w-75" style="text-align: center">REGISTER</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center " style="margin-top: 20px">
+
+        <form style="width: 30%" #registerForm="ngForm" (submit)="registerFormSubmit(registerForm)">
+          <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Name" placeholder="Enter your name" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="Email" class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="Email" placeholder="Enter your email eg: abcd@qwer.com" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="UserId" class="col-sm-3 col-form-label">User ID</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="UserId" placeholder="Enter a User ID" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="Password" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="Password" placeholder="Enter a strong password" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-12" style="text-align: center">
+              <button type="submit" class="btn btn-success form-control" style="width: 33%" id="Submit">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class="d-flex justify-content-center w-75">
+
+        <form>
+          <div class="form-inline">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name eg: Paul">
+          </div>
+          <div class="form-inline">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" placeholder="Enter your email eg: abcd@qwer.com">
+          </div>
+          <div class="form-inline">
+            <label for="UserId">User ID</label>
+            <input type="text" class="form-control" id="UserId" placeholder="Enter a User ID">
+          </div>
+          <div class="form-inline">
+            <label for="Password">Password</label>
+            <input type="text" class="form-control" id="Password" placeholder="Enter a strong password">
+          </div>
+        </form>
+
+      </div> -->
+    </div>
+  </div>
+</div>

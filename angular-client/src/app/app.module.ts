@@ -14,11 +14,13 @@ import { AddNewsComponent } from './add-news/add-news.component';
 import { AddNewsService } from './add-news/add-news.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { RegisterComponent } from './register/register.component';
 
 const router: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'dashboard', component: DashboardComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'register', component: RegisterComponent },
 ]
 
 @NgModule({
@@ -28,7 +30,8 @@ const router: Routes = [
         DashboardComponent,
         HeaderComponent,
         AddNewsComponent,
-        LoginModalComponent
+        LoginModalComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
