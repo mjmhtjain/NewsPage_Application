@@ -1,4 +1,4 @@
-//Create Database with name: NewsPage
+﻿//Create Database with name: NewsPage
 
 //use NewsPage
 
@@ -11,7 +11,7 @@ db.UserDetails.insertMany([
     "userId" : "ojn5kor", 
     "name" : "Mohit", 
     "email" : "mjmhtjain@gmail.com", 
-    "password" : "$2b$04$hz17OiyDYAlJiYYwQEFHM.ykWdrqkUlsNwMlZkkm0PN6nGfflKDuS"
+    "password" : "ojn5kor"
 }
 ]);
 

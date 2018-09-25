@@ -8,14 +8,15 @@ const session = require('express-session');
 const dataScraper = require('./Util/dataScrapper');
 const request = require('request');
 const cheerio = require('cheerio');
+const config = require('./config');
 
 //import models
 const UserDetailModel = require('./Models/userDetailsModel');
 const NewsArticlesModel = require('./Models/newsArticlesModel');
 
 // Connect mongoose to our database
-const config = require('./database');
-mongoose.connect(config.database, { useNewUrlParser: true });
+const dbString = require('./database');
+mongoose.connect(dbString.database, { useNewUrlParser: true });
 
 //Initialize our app variable
 const app = express();
@@ -182,7 +183,7 @@ app.use((req, res, next) => {
 })
 
 //Declaring Port
-const port = 3000;
+const port = config.app.port;
 
 app.listen(port, () => {
     console.log('Starting server at ' + port);
