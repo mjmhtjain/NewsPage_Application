@@ -9,9 +9,6 @@ const dataScraper = require('./Util/dataScrapper');
 const request = require('request');
 const cheerio = require('cheerio');
 
-//import controllers
-const PasswordHasher = require('./Util/passwordHasher');
-
 //import models
 const UserDetailModel = require('./Models/userDetailsModel');
 const NewsArticlesModel = require('./Models/newsArticlesModel');
@@ -124,14 +121,13 @@ app.route('/register')
         let formPassword = req.body.password;
         let formName = req.body.name;
         let formEmail = req.body.email;
-        let hashedPass = PasswordHasher.asynchEncrypt(formPassword);
 
         let userDetailModel = UserDetailModel.model;
         let newUserObj = new userDetailModel({
             userId: formUserId,
             name: formName,
             email: formEmail,
-            password: hashedPass 
+            password: formPassword
         });
 
         UserDetailModel.queries.registerUser(newUserObj, (err, dbData) => {
@@ -154,16 +150,14 @@ app.route('/login')
                 res.json({ success: false, message: err });
             } else {
                 if (data && data.length > 0) {
-                    let hashedPass = data[0]._doc.password;
-                    PasswordHasher.validatePassword(pass, hashedPass, (err, result) => {
-                        if (result) {
-                            req.session.user = user;
-                            res.json({ success: true, message: "Correct Password", data: { userId: user, password: pass } });
-                        } else {
-                            req.session.user = null;
-                            res.json({ success: false, message: "Wrong Password" });
-                        }
-                    });
+                    let dbPassword = data[0]._doc.password;
+                    if (dbPassword == pass) {
+                        req.session.user = user;
+                        res.json({ success: true, message: "Correct Password", data: { userId: user, password: pass } });
+                    } else {
+                        req.session.user = null;
+                        res.json({ success: false, message: "Wrong Password" });
+                    }
                 } else {
                     req.session.user = null;
                     res.json({ success: false, message: "Wrong Password" });

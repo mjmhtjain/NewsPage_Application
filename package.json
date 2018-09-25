@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/mjmhtjain/NewsPage_Application#readme",
   "dependencies": {
-    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
