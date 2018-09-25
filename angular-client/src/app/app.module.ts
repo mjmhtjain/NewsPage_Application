@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {AlertModule} from 'ngx-bootstrap/alert';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,6 +16,7 @@ import { AddNewsService } from './add-news/add-news.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './register/register.service';
 
 const router: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -37,10 +39,11 @@ const router: Routes = [
         BrowserModule,
         RouterModule.forRoot(router),
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        AlertModule.forRoot()
     ],
     providers: [LoginService, HttpService, AddNewsService,
-        DashboardService],
+        DashboardService, RegisterService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

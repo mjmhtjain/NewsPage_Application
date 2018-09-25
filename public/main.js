@@ -230,19 +230,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./login/login.service */ "./src/app/login/login.service.ts");
-/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./http/http.service */ "./src/app/http/http.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./add-news/add-news.component */ "./src/app/add-news/add-news.component.ts");
-/* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
-/* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
-/* harmony import */ var _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login-modal/login-modal.component */ "./src/app/login-modal/login-modal.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap/alert */ "./node_modules/ngx-bootstrap/alert/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login/login.service */ "./src/app/login/login.service.ts");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./http/http.service */ "./src/app/http/http.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./add-news/add-news.component */ "./src/app/add-news/add-news.component.ts");
+/* harmony import */ var _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./add-news/add-news.service */ "./src/app/add-news/add-news.service.ts");
+/* harmony import */ var _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard/dashboard.service */ "./src/app/dashboard/dashboard.service.ts");
+/* harmony import */ var _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./login-modal/login-modal.component */ "./src/app/login-modal/login-modal.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _register_register_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./register/register.service */ "./src/app/register/register.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -265,11 +267,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var router = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
-    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"] },
-    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_15__["RegisterComponent"] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_10__["DashboardComponent"] },
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_16__["RegisterComponent"] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -277,23 +281,24 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
-                _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_11__["AddNewsComponent"],
-                _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_14__["LoginModalComponent"],
-                _register_register_component__WEBPACK_IMPORTED_MODULE_15__["RegisterComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"],
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_10__["DashboardComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_11__["HeaderComponent"],
+                _add_news_add_news_component__WEBPACK_IMPORTED_MODULE_12__["AddNewsComponent"],
+                _login_modal_login_modal_component__WEBPACK_IMPORTED_MODULE_15__["LoginModalComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_16__["RegisterComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(router),
+                _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot(router),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
+                ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_3__["AlertModule"].forRoot()
             ],
-            providers: [_login_login_service__WEBPACK_IMPORTED_MODULE_6__["LoginService"], _http_http_service__WEBPACK_IMPORTED_MODULE_7__["HttpService"], _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_12__["AddNewsService"],
-                _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_13__["DashboardService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            providers: [_login_login_service__WEBPACK_IMPORTED_MODULE_7__["LoginService"], _http_http_service__WEBPACK_IMPORTED_MODULE_8__["HttpService"], _add_news_add_news_service__WEBPACK_IMPORTED_MODULE_13__["AddNewsService"],
+                _dashboard_dashboard_service__WEBPACK_IMPORTED_MODULE_14__["DashboardService"], _register_register_service__WEBPACK_IMPORTED_MODULE_17__["RegisterService"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -847,7 +852,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- FOR REGISTER PAGE -->\n<nav class=\"navbar navbar-expand-sm bg-light\">\n\n  <ul class=\"nav nav-pills mr-auto\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [routerLink] = \"['/login']\">Back to Login Page</a>\n    </li>\n  </ul>\n\n  <!-- <form class=\"form-inline ml-auto\" #f=\"ngForm\" (ngSubmit)=\"submit(f)\">\n    <input class=\"form-control mr-sm-2\" type=\"text\" name=\"user\" [(ngModel)]=\"loginId\" placeholder=\"UserId\">\n    <input class=\"form-control mr-sm-2\" type=\"password\" name=\"pass\" [(ngModel)]=\"password\" placeholder=\"Password\">\n    <button class=\"btn btn-success\" type=\"submit\">Login</button>\n  </form> -->\n\n</nav>\n\n<div class=\"container-fluid\" style=\"height: 100%;\">\n\n\n\n  <div class=\"row\" style=\"margin-top: 20px\">\n    <div class=\"col-sm-12\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <h3 class=\"w-75\" style=\"text-align: center\">REGISTER</h3>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"d-flex justify-content-center \" style=\"margin-top: 20px\">\n\n        <form style=\"width: 30%\" #registerForm=\"ngForm\" (submit)=\"registerFormSubmit(registerForm)\">\n          <div class=\"form-group row\">\n            <label for=\"Name\" class=\"col-sm-3 col-form-label\">Name</label>\n            <div class=\"col-sm-9\">\n              <input type=\"text\" class=\"form-control\" id=\"Name\" placeholder=\"Enter your name\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Email\" class=\"col-sm-3 col-form-label\">Email</label>\n            <div class=\"col-sm-9\">\n              <input type=\"email\" class=\"form-control\" id=\"Email\" placeholder=\"Enter your email eg: abcd@qwer.com\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"UserId\" class=\"col-sm-3 col-form-label\">User ID</label>\n            <div class=\"col-sm-9\">\n              <input type=\"text\" class=\"form-control\" id=\"UserId\" placeholder=\"Enter a User ID\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Password\" class=\"col-sm-3 col-form-label\">Password</label>\n            <div class=\"col-sm-9\">\n              <input type=\"password\" class=\"form-control\" id=\"Password\" placeholder=\"Enter a strong password\" required>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <div class=\"col-sm-12\" style=\"text-align: center\">\n              <button type=\"submit\" class=\"btn btn-success form-control\" style=\"width: 33%\" id=\"Submit\">Register</button>\n            </div>\n          </div>\n        </form>\n      </div>\n\n      <!-- <div class=\"d-flex justify-content-center w-75\">\n\n        <form>\n          <div class=\"form-inline\">\n            <label for=\"name\">Name</label>\n            <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Enter your name eg: Paul\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"Email\">Email</label>\n            <input type=\"text\" class=\"form-control\" id=\"Email\" placeholder=\"Enter your email eg: abcd@qwer.com\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"UserId\">User ID</label>\n            <input type=\"text\" class=\"form-control\" id=\"UserId\" placeholder=\"Enter a User ID\">\n          </div>\n          <div class=\"form-inline\">\n            <label for=\"Password\">Password</label>\n            <input type=\"text\" class=\"form-control\" id=\"Password\" placeholder=\"Enter a strong password\">\n          </div>\n        </form>\n\n      </div> -->\n    </div>\n  </div>\n</div>"
+module.exports = "<!-- FOR REGISTER PAGE -->\n<nav class=\"navbar navbar-expand-sm bg-light\">\n\n  <ul class=\"nav nav-pills mr-auto\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" [routerLink]=\"['/login']\">Back to Login Page</a>\n    </li>\n  </ul>\n\n</nav>\n\n<div class=\"container-fluid\">\n\n  <div class=\"row\" style=\"margin-top: 20px\">\n    <div class=\"col-sm-12\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <alert [type]=\"alert.type\" class=\"w-25\" style=\"text-align: center\" *ngIf=\"alertOpen\" [dismissOnTimeout]=\"alert.timeout\"\n              (onClosed)=\"closeAlert()\">\n              {{alert.message}}\n            </alert>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\" *ngIf=\"!hideForm\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <h3 class=\"w-75\" style=\"text-align: center\">REGISTER</h3>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\" *ngIf=\"hideForm\">\n        <div class=\"col-sm-12\">\n          <div class=\"d-flex justify-content-center\">\n            <h5 class=\"w-75\" style=\"text-align: center\">You have registered successfully!! Please login with your credentials.</h5>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"d-flex justify-content-center \" style=\"margin-top: 20px\" *ngIf=\"!hideForm\">\n\n        <form style=\"width: 30%\" #registerForm=\"ngForm\" (ngSubmit)=\"register(registerForm)\">\n          <div class=\"form-group row\">\n            <label for=\"Name\" class=\"col-sm-3 col-form-label\">Name</label>\n            <div class=\"col-sm-9\">\n              <input #name_text=\"ngModel\" type=\"text\" name=\"input0\" [(ngModel)]=\"name\" class=\"form-control\" id=\"name\"\n                placeholder=\"Enter your name\" required>\n              <div [hidden]=\"name_text.valid || name_text.pristine\" class=\"alert alert-danger\">\n                Name is required\n              </div>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Email\" class=\"col-sm-3 col-form-label\">Email</label>\n            <div class=\"col-sm-9\">\n              <input #email_text=\"ngModel\" type=\"email\" name=\"input1\" [(ngModel)]=\"email\" class=\"form-control\" id=\"Email\"\n                placeholder=\"Enter your email eg: abcd@qwer.com\" required>\n              <div [hidden]=\"email_text.valid || email_text.pristine\" class=\"alert alert-danger\">\n                Email is required\n              </div>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"UserId\" class=\"col-sm-3 col-form-label\">User ID</label>\n            <div class=\"col-sm-9\">\n              <input #userId_text=\"ngModel\" type=\"text\" name=\"input2\" [(ngModel)]=\"userId\" class=\"form-control\" id=\"UserId\"\n                placeholder=\"Enter a User ID\" required>\n              <div [hidden]=\"userId_text.valid || userId_text.pristine\" class=\"alert alert-danger\">\n                User ID is required\n              </div>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <label for=\"Password\" class=\"col-sm-3 col-form-label\">Password</label>\n            <div class=\"col-sm-9\">\n              <input #password_text=\"ngModel\" type=\"password\" name=\"input3\" [(ngModel)]=\"password\" class=\"form-control\"\n                id=\"Password\" placeholder=\"Enter a strong password\" required>\n              <div [hidden]=\"password_text.valid || password_text.pristine\" class=\"alert alert-danger\">\n                Password is required\n              </div>\n            </div>\n          </div>\n\n          <div class=\"form-group row\">\n            <div class=\"col-sm-12\" style=\"text-align: center\">\n              <button type=\"submit\" class=\"btn btn-success form-control\" style=\"width: 33%\" id=\"Submit\" [disabled]=\"!registerForm.form.valid\">Register</button>\n            </div>\n          </div>\n        </form>\n      </div>\n\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -862,6 +867,8 @@ module.exports = "<!-- FOR REGISTER PAGE -->\n<nav class=\"navbar navbar-expand-
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _register_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register.service */ "./src/app/register/register.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -872,10 +879,60 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent() {
+    function RegisterComponent(registerService, router) {
+        this.registerService = registerService;
+        this.router = router;
+        this.name = '';
+        this.email = '';
+        this.userId = '';
+        this.password = '';
+        this.alertOpen = false;
+        this.hideForm = false;
     }
     RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent.prototype.register = function (form) {
+        var _this = this;
+        if (this.userId.trim() && this.password.trim() && this.name.trim() && this.email.trim()) {
+            var userDetails = {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                userId: this.userId
+            };
+            this.registerService.register(userDetails).subscribe(function (res) {
+                if (res['success']) {
+                    console.log(res['data']);
+                    _this.openAlert('Done :)', 'success');
+                    // form.reset();
+                    _this.hideForm = true;
+                }
+                else {
+                    _this.openAlert(res['message'], 'danger');
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        }
+        else {
+            this.openAlert('Invalid Details', 'danger');
+            form.reset();
+        }
+        // form.reset();
+    };
+    RegisterComponent.prototype.closeAlert = function () {
+        this.alertOpen = false;
+    };
+    RegisterComponent.prototype.openAlert = function (message, alertType) {
+        this.alert = {
+            timeout: 3000,
+            message: message,
+            type: alertType
+        };
+        this.alertOpen = true;
     };
     RegisterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -883,9 +940,52 @@ var RegisterComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_register_service__WEBPACK_IMPORTED_MODULE_1__["RegisterService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/register/register.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/register/register.service.ts ***!
+  \**********************************************/
+/*! exports provided: RegisterService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterService", function() { return RegisterService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http/http.service */ "./src/app/http/http.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RegisterService = /** @class */ (function () {
+    function RegisterService(httpService) {
+        this.httpService = httpService;
+    }
+    RegisterService.prototype.register = function (userDetails) {
+        return this.httpService.httpPost('/register', userDetails);
+    };
+    RegisterService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_http_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"]])
+    ], RegisterService);
+    return RegisterService;
 }());
 
 
