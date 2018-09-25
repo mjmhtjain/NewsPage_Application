@@ -182,8 +182,8 @@ app.use((req, res, next) => {
     res.redirect('/');
 })
 
-//Declaring Port
-const port = config.app.port;
+//Declaring Port //adding port for heroku
+const port = process.env.PORT || config.app.port;
 
 app.listen(port, () => {
     console.log('Starting server at ' + port);
