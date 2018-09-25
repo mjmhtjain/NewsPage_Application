@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\OJN5KOR\Desktop\Gantt-Project\NewsPage_Application\angular-client\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\Mohit Jain\Desktop\Projects\NewsPage_Application\angular-client\src\styles.css */"./src/styles.css");
 
 
 /***/ })
